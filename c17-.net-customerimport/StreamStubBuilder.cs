@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using NHibernate.Linq;
-using NHibernate.Utils;
 
 namespace com.tenpines.advancetdd
 {
