@@ -19,7 +19,6 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
-
     - name: Setup Nuget.exe
       uses: NuGet/setup-nuget@v1.1.1
       env:
@@ -32,6 +31,9 @@ jobs:
       run: |
            dotnet restore
            dotnet tool restore
+
+    - name: Install Codecov
+      uses: codecov/codecov-action@v3.1.1
 
     - name: Install Coverlet
       run: dotnet tool install --global coverlet.console
