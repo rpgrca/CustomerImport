@@ -26,19 +26,21 @@ jobs:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
     - name: Restore packages
-      run: nuget restore C17-.Net-CustomerImport.sln
+      run: nuget restore CustomerImport.sln
 
     - name: Install tools
-      run: dotnet tool restore
+      run: |
+           dotnet restore
+           dotnet tool restore
 
-    - name: Build Debug with MSBuild
-      run: msbuild C17-.Net-CustomerImport.sln -p:Configuration=Debug
+    - name: Install Coverlet
+      run: dotnet tool install --global coverlet.console
 
-    - name: Build Release with MSBuild
-      run: msbuild C17-.Net-CustomerImport.sln -p:Configuration=Release
+    - name: Build Debug
+      run: dotnet build --configuration Debug --no-restore CustomerImport.sln
 
-#    - name: Testing
-#      run: coverlet c17-.net-customerimport/bin/Debug/net452/CustomerImport.dll --target "dotnet" --targetargs "test c17-.net-customerimport/C17-.Net-CustomerImport.csproj --no-build --verbosity quiet" --format OpenCover --output customerimport.coverage.xml
+    - name: Testing
+      run: coverlet CustomerImport/CustomerImport.UnitTests/bin/Debug/net472/CustomerImport.UnitTests.dll --target "dotnet" --targetargs "test CustomerImport/CustomerImport.UnitTests/CustomerImport.UnitTests.csproj --no-build --verbosity quiet" --format OpenCover --output customerimport.coverage.xml
 #
 #    - name: Upload
 #      run: codecov -f customerimport.coverage.xml
