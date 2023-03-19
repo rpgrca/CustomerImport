@@ -18,7 +18,7 @@ namespace com.tenpines.advancetdd
         [Fact]
         public void GivenAnImporter_WhenInitializingWithNullStreamReader_ThenAnExceptionIsThrown()
         {
-            var customerService = new PersistentCustomerService();
+            var customerService = new TranscientCustomerService();
             var exception = Assert.Throws<ArgumentException>(() => new CustomerImporter(customerService, null));
             Assert.Equal(CustomerImporter.STREAM_READER_IS_NULL_EXCEPTION, exception.Message);
         }
