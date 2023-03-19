@@ -20,7 +20,7 @@ namespace com.tenpines.advancetdd
                 .AddLine("C,Juan,Perez,C,23-25666777-9")
                 .AddLine("A,Alem,1122,CABA,1001,CABA")
                 .Build();
-            _customerService = new PersistentCustomerService();
+            _customerService = new TranscientCustomerService();
             _customerImporter = new CustomerImporter(_customerService, _streamReader);
         }
 
