@@ -18,9 +18,13 @@
   <ItemGroup>
     <PackageReference Include="FluentNHibernate" Version="3.1.0" />
     <PackageReference Include="Iesi.Collections" Version="4.0.5" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="Microsoft.TestPlatform" Version="17.5.0" />
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.5.0" />
+    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.5.0" />
+    <PackageReference Include="Microsoft.VisualStudio.TestPlatform" Version="14.0.0" />
     <PackageReference Include="NHibernate" Version="5.4.1" />
     <PackageReference Include="System.Data.SqlServerCe_unofficial" Version="4.0.8482.1" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="coverlet.collector" Version="3.2.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -31,6 +35,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)' == 'Coverage' ">
+    <Exec Command="dotnet tool restore" />
+    <Exec Command="dotnet coverlet bin/Debug/net472/CustomerImport.dll --target &quot;dotnet&quot; --targetargs &quot;test C17-.Net-CustomerImport.csproj --no-build --verbosity quiet&quot; --format cobertura --output reports/coverage/coverage.cobertura.xml" />
+    <Exec Command="dotnet reportgenerator &quot;-reports:reports/coverage/coverage.cobertura.xml&quot; &quot;-targetdir:reports/html&quot; &quot;-historydir:reports/coverage/history&quot;" />
+  </Target>
 
     <ItemGroup>
     <None Update="CustomerImport.sdf">
@@ -55,5 +65,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CustomerImport.Logic\CustomerImport.Logic.csproj" />
+    </ItemGroup>
 
 </Project>
