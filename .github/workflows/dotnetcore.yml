@@ -41,6 +41,12 @@ jobs:
 
     - name: Testing
       run: coverlet CustomerImport.UnitTests/bin/Debug/net472/CustomerImport.UnitTests.dll --target "dotnet" --targetargs "test CustomerImport.UnitTests/CustomerImport.UnitTests.csproj --no-build --verbosity quiet" --format OpenCover --output customerimport.coverage.xml
-#
-#    - name: Upload
-#      run: codecov -f customerimport.coverage.xml
+
+    - name: Upload coverage to CodeCov
+      run: bash <(curl -s https://codecov.io/bash)
+
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage-report
+        path: ./*.coverage.xml
