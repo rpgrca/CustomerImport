@@ -32,9 +32,6 @@ jobs:
            dotnet restore
            dotnet tool restore
 
-    - name: Install Codecov
-      uses: codecov/codecov-action@v3.1.1
-
     - name: Install Coverlet
       run: dotnet tool install --global coverlet.console
 
@@ -45,7 +42,7 @@ jobs:
       run: coverlet CustomerImport.UnitTests/bin/Debug/net472/CustomerImport.UnitTests.dll --target "dotnet" --targetargs "test CustomerImport.UnitTests/CustomerImport.UnitTests.csproj --no-build --verbosity quiet" --format OpenCover --output customerimport.coverage.xml
 
     - name: Upload coverage to CodeCov
-      run: codecov -f customerimport.coverage.xml
+      uses: codecov/codecov-action@v3.1.1
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v3
