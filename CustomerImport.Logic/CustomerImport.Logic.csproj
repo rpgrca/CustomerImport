@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentNHibernate" Version="3.1.0" />
+    <PackageReference Include="FluentNHibernate" Version="3.2.0" />
     <PackageReference Include="Iesi.Collections" Version="4.0.5" />
     <PackageReference Include="NHibernate" Version="5.4.2" />
     <PackageReference Include="System.Data.SqlServerCe_unofficial" Version="4.0.8482.1" />
