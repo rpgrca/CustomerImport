@@ -19,7 +19,7 @@
     <PackageReference Include="FluentNHibernate" Version="3.2.1" />
     <PackageReference Include="Iesi.Collections" Version="4.0.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.2" />
-    <PackageReference Include="Microsoft.TestPlatform" Version="17.6.0" />
+    <PackageReference Include="Microsoft.TestPlatform" Version="17.6.2" />
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.6.2" />
     <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.6.2" />
     <PackageReference Include="Microsoft.VisualStudio.TestPlatform" Version="14.0.0" />
