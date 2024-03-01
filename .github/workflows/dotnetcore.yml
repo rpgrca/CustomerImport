@@ -42,7 +42,7 @@ jobs:
       run: coverlet CustomerImport.UnitTests/bin/Debug/net472/CustomerImport.UnitTests.dll --target "dotnet" --targetargs "test CustomerImport.UnitTests/CustomerImport.UnitTests.csproj --no-build --verbosity quiet" --format OpenCover --output customerimport.coverage.xml
 
     - name: Upload coverage to CodeCov
-      uses: codecov/codecov-action@v4.0.1
+      uses: codecov/codecov-action@v4.1.0
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v4
