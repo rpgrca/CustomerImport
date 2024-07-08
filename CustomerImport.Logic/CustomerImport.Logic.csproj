@@ -18,7 +18,7 @@
   <ItemGroup>
     <PackageReference Include="FluentNHibernate" Version="3.3.0" />
     <PackageReference Include="Iesi.Collections" Version="4.1.1" />
-    <PackageReference Include="NHibernate" Version="5.5.1" />
+    <PackageReference Include="NHibernate" Version="5.5.2" />
     <PackageReference Include="System.Data.SqlServerCe_unofficial" Version="4.0.8482.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.2">
